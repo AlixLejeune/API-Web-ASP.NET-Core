@@ -1,6 +1,6 @@
 ﻿namespace API_Web_ASP.NET_Core.Models.EntityFramework
 {
-    public class Notation
+    public partial class Notation
     {
     }
 }

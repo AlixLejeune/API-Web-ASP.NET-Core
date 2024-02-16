@@ -31,7 +31,7 @@ namespace API_Web_ASP.NET_Core.Models.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Avi>(entity =>
+            modelBuilder.Entity<Notation>(entity =>
             {
                 entity.HasKey(e => new { e.Film, e.Utilisateur })
                     .HasName("pk_avis");

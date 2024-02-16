@@ -1,6 +1,7 @@
 ﻿namespace API_Web_ASP.NET_Core.Models.EntityFramework
 {
-    public class Film
+    public partial class Film
     {
+
     }
 }
