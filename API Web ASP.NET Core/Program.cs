@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using API_Web_ASP.NET_Core.Models.EntityFramework;
+
 namespace API_Web_ASP.NET_Core
 {
     public class Program
@@ -6,7 +9,9 @@ namespace API_Web_ASP.NET_Core
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // A ajouter pour mettre en place la dépendance et le contexte, sans quoi l'APi plante -> string de connexion dans appsettings.json
+            builder.Services.AddDbContext<FilmRatingsDBContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("FilmsDBContext")));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
