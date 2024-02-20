@@ -130,7 +130,7 @@ namespace API_Web_ASP.NET_Core.Controllers.Tests
             // Du coup, on récupère l'ID de celui récupéré et on compare ensuite les 2 users
             userAtester.UtilisateurId = userRecupere.UtilisateurId;
             Assert.AreEqual(userRecupere, userAtester, "Utilisateurs pas identiques");
-            //var delete = controller.DeleteUtilisateur(controller.GetUtilisateurByEmail(userAtester.Mail).Id).Result;
+            var delete = controller.DeleteUtilisateur(context.Utilisateurs.FirstOrDefault(c => c.Mail == userAtester.Mail).UtilisateurId).Result;
         }
 
         [TestMethod()]
