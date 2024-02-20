@@ -100,16 +100,20 @@ namespace API_Web_ASP.NET_Core.Controllers
         // POST: api/Utilisateurs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Utilisateur>> PostUtilisateur(Utilisateur utilisateur)
         {
-          if (_context.Utilisateurs == null)
-          {
-              return Problem("Entity set 'FilmRatingsDBContext.Utilisateurs'  is null.");
-          }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             _context.Utilisateurs.Add(utilisateur);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUtilisateur", new { id = utilisateur.UtilisateurId }, utilisateur);
+            return CreatedAtAction("GetById", new
+            {
+                id = utilisateur.UtilisateurId
+            }, utilisateur);
         }
 
         // DELETE: api/Utilisateurs/5

@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace API_Web_ASP.NET_Core.Migrations
 {
-    public partial class CreationFilmsDB : Migration
+    public partial class CreationBDFilmRatings : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,7 +62,7 @@ namespace API_Web_ASP.NET_Core.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_not", x => new { x.utl_id, x.flm_id });
-                    table.CheckConstraint("CK_t_j_notation_not_ck_not_note", "not_note between 0 and 5");
+                    table.CheckConstraint("ck_not_note", "not_note between 0 and 5");
                     table.ForeignKey(
                         name: "fk_not_flm",
                         column: x => x.flm_id,

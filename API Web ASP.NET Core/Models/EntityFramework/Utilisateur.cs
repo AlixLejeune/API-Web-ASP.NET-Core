@@ -62,6 +62,22 @@ namespace API_Web_ASP.NET_Core.Models.EntityFramework
         [InverseProperty(nameof(Notation.UtilisateurNotant))]
         public virtual ICollection<Notation> NotesUtilisateur { get; set; }
 
-
+        public override bool Equals(object? obj)
+        {
+            return obj is Utilisateur utilisateur &&
+                   UtilisateurId == utilisateur.UtilisateurId &&
+                   Nom == utilisateur.Nom &&
+                   Prenom == utilisateur.Prenom &&
+                   Mobile == utilisateur.Mobile &&
+                   Mail == utilisateur.Mail &&
+                   Pwd == utilisateur.Pwd &&
+                   Rue == utilisateur.Rue &&
+                   CodePostal == utilisateur.CodePostal &&
+                   Ville == utilisateur.Ville &&
+                   Pays == utilisateur.Pays &&
+                   Latitude == utilisateur.Latitude &&
+                   Longitude == utilisateur.Longitude &&
+                   DateCreation == utilisateur.DateCreation;
+        }
     }
 }
